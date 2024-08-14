@@ -1,16 +1,24 @@
 ---
+import MainLayouts from "../layouts/MainLayout.astro";
 
+const name = "Facundo Colavini";
+const title = "Home Page";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Hola Mundo</title>
-	</head>
-	<body>
-		<h1>Facundo Colavini</h1>
-	</body>
-</html>
+<MainLayouts title={title}>
+    <h1>{name}</h1>
+    <p id="currentTime">Momento actual: {new Date().toLocaleTimeString()}</p>
+   
+    <script>
+      /* Momento actual */
+      const p = document.querySelector("p") as HTMLParagraphElement;
+      let currentMoment = '';
+
+      setInterval(() => {
+        currentMoment = new Date().toLocaleTimeString();
+        return (p.innerHTML = `Momento actual: ${currentMoment}`);
+      }, 200);
+
+    </script>
+
+</MainLayouts>
